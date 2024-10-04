@@ -19,6 +19,8 @@ if repo_url:
     print(f"Cloning {language_template} template from {repo_url}...")
     run_command(f'git clone {repo_url} temp_language')
 
+    run_command('ls temp_language')
+    
     # Copy files from the language template to the current project
     run_command(f'cp -r temp_language/{{ cookiecutter.project_slug }}/. {{ cookiecutter.project_slug }}/')
     
