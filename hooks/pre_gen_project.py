@@ -17,7 +17,7 @@ language_repos = {
 repo_url = language_repos.get(language_template)
 if repo_url:
     # Clone the selected language template
-    run_command('git clone https://github.com/user/python-template temp_language')
+    run_command('git clone https://github.com/mahergzam/cookie-cutter-python temp_language')
 
     # Verify the clone was successful
     run_command('ls temp_language')
