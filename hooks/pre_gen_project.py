@@ -24,11 +24,12 @@ if repo_url:
     # Verify that the repository was cloned correctly
     run_command('ls temp_language')
 
-    # Check if the expected {{ cookiecutter.project_slug }} directory exists
-    source_dir = os.path.join('temp_language', project_slug)
+    # Find the actual folder inside temp_language (without assuming project_slug is expanded)
+    folder_name = next(os.walk('temp_language'))[1][0]  # Gets the first directory inside temp_language
+    source_dir = os.path.join('temp_language', folder_name)
 
     if os.path.exists(source_dir):
-        # Copy files from the language template's project folder to the main project directory
+        # Copy files from the cloned template directory to the project directory
         run_command(f'cp -r {source_dir}/. {project_slug}/')
         print(f"Copied files from {source_dir} to {project_slug}")
     else:
