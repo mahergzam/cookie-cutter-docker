@@ -40,7 +40,7 @@ if repo_url:
     run_command(f'git clone {repo_url} temp_language')
 
     # Verify that the repository was cloned correctly
-    run_command('ls')
+    run_command('ls -R')
 
 else:
     print(f"Error: Invalid language template '{language_template}' selected.")
