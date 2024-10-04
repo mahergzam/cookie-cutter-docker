@@ -24,7 +24,7 @@ if repo_url:
     os.chdir('temp_language')
 
     # Run cookiecutter inside the cloned template (using the language-specific cookiecutter.json)
-    run_command('cookiecutter . --no-input')
+    run_command('cookiecutter . --no-input project_name={{ cookiecutter.project_slug }}')
 
     # Step 3: Identify the rendered project folder (based on rendered project_slug)
     rendered_folder_name = '{{ cookiecutter.project_slug }}'
