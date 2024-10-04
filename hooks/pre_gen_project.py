@@ -35,7 +35,7 @@ if repo_url:
     run_command('ls -R')
 
     # Step 4: Copy the rendered files to the main project directory
-    run_command(f'cp -r temp_language/{rendered_folder_name}/. {{ cookiecutter.project_slug }}/')
+    run_command(f'mv temp_language/{rendered_folder_name}/* {{ cookiecutter.project_slug }}/')
 
     # Step 5: Cleanup
     run_command('rm -rf temp_language')
