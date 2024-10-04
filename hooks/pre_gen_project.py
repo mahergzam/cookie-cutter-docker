@@ -19,19 +19,19 @@ language_repos = {
 repo_url = language_repos.get(language_template)
 if repo_url:
     print(f"Cloning {language_template} template from {repo_url}...")
-    run_command(f'git clone {repo_url} temp_language')
+    run_command(f'git clone {repo_url} /harness/temp_language')
 
     # Verify that the repository was cloned correctly
-    run_command('ls temp_language')
+    run_command('ls /harness/temp_language')
 
     # Use a wildcard to find the project folder (since we can't rely on placeholders being resolved)
-    source_dir = next(os.path.join("temp_language", d) for d in os.listdir("temp_language") if os.path.isdir(os.path.join("temp_language", d)))
+    source_dir = next(os.path.join("/harness/temp_language", d) for d in os.listdir("/harness/temp_language") if os.path.isdir(os.path.join("/harness/temp_language", d)))
 
     # Copy files from the language template's project folder to the main project directory
     run_command(f'cp -r {source_dir}/. {{ cookiecutter.project_slug }}/')
 
     # Clean up the temporary directory
-    run_command('rm -rf temp_language')
+    run_command('rm -rf /harness/temp_language')
     print(f"{language_template.capitalize()} template files have been added to your project.")
 else:
     print(f"Error: Invalid language template '{language_template}' selected.")
