@@ -1,0 +1,5 @@
+{
+  "project_name": "My Docker Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "docker_image": "python:3.9-slim"
+}
