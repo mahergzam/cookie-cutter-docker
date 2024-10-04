@@ -24,12 +24,11 @@ if repo_url:
     # Verify that the repository was cloned correctly
     run_command('ls temp_language')
 
-    # Use the actual value of project_slug to copy the files
-    source_path = f'temp_language/{project_slug}/.'
-    target_path = f'{project_slug}/'
+    # Use a wildcard to find the project folder (since we can't rely on placeholders being resolved)
+    source_dir = next(os.path.join("temp_language", d) for d in os.listdir("temp_language") if os.path.isdir(os.path.join("temp_language", d)))
 
-    # Copy files from the selected language template to the main project directory
-    run_command(f'cp -r {source_path} {target_path}')
+    # Copy files from the language template's project folder to the main project directory
+    run_command(f'cp -r {source_dir}/. {{ cookiecutter.project_slug }}/')
 
     # Clean up the temporary directory
     run_command('rm -rf temp_language')
